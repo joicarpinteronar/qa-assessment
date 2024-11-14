@@ -28,7 +28,7 @@ describe('PUT /posts/:id', () => {
     };
 
     const response = await request(url)
-      .put('/3')  // Suponemos que estamos actualizando el post con id 3
+      .put('/8')  // Suponemos que estamos actualizando el post con id 3
       .set(headers)
       .send(validPostData);
 
@@ -36,7 +36,7 @@ describe('PUT /posts/:id', () => {
     expect(response.status).toBe(200);
 
     // Verificamos que la respuesta contenga los datos esperados
-    expect(response.body).toHaveProperty('id', 3);
+    expect(response.body).toHaveProperty('id', 8);
     expect(response.body).toHaveProperty('authorId');
     expect(response.body).toHaveProperty('title', validPostData.title);  // Título actualizado
     expect(response.body).toHaveProperty('content', validPostData.content);  // Contenido actualizado
@@ -57,7 +57,7 @@ describe('PUT /posts/:id', () => {
     };
 
     const response = await request(url)
-      .put('/3')
+      .put('/8')
       .set(headers)
       .send(invalidPostData);
 
@@ -82,7 +82,7 @@ describe('PUT /posts/:id', () => {
     };
 
     const response = await request(url)
-      .put('/3')
+      .put('/8')
       .set(headers)
       .send(invalidPostData);
 
@@ -106,7 +106,7 @@ describe('PUT /posts/:id', () => {
     };
 
     const response = await request(url)
-      .put('/3')  // Actualizando el post con ID 3
+      .put('/8')  // Actualizando el post con ID 3
       .set(headers)
       .send(invalidPostData);
 
@@ -114,8 +114,8 @@ describe('PUT /posts/:id', () => {
     expect(response.status).toBe(200);
 
     // Verificamos que la respuesta contenga el título y contenido correctos
-    expect(response.body).toHaveProperty('id', 3);
-    expect(response.body).toHaveProperty('authorId', 2);  // ID del autor debería mantenerse igual 
+    expect(response.body).toHaveProperty('id', 8);
+    expect(response.body).toHaveProperty('authorId', 7);  // ID del autor debería mantenerse igual 
     expect(response.body).toHaveProperty('content', invalidPostData.content);  // El contenido cambia
     expect(response.body).toHaveProperty('createdAt');
     expect(response.body).toHaveProperty('updatedAt');
